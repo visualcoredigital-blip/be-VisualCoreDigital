@@ -22,7 +22,12 @@ const ContactSchema = new mongoose.Schema({
   },
   empresa: { type: String, trim: true },
   descripcion: { type: String, required: [true, 'La descripción es necesaria'] },
-  fecha: { type: Date, default: Date.now }
+  fecha: { type: Date, default: Date.now },
+  estado: { 
+    type: String, 
+    enum: ['Pendiente', 'Contactado'], 
+    default: 'Pendiente' 
+  },
 });
 
 module.exports = mongoose.model('Contact', ContactSchema);
